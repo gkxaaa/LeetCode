@@ -68,8 +68,7 @@ class Codec:
             if data[0]=='None':
                 data.pop(0)
                 return None
-            subroot = TreeNode(data[0])
-            data.pop(0)
+            subroot = TreeNode(data.pop(0))
             subroot.left = dfs_generate(data)
             subroot.right = dfs_generate(data)
             return subroot   

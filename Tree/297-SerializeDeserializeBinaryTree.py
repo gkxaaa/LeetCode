@@ -1,3 +1,4 @@
+--------05.09.2019-----------
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -34,7 +35,7 @@ class Codec:
                 return [None]
             return [root.val] + dfs(root.left) + dfs(root.right)
         return str(dfs(root)) 
-        
+
     def deserialize(self, data):
         """Decodes your encoded data to tree.
         
@@ -53,7 +54,8 @@ class Codec:
         
         # 这里当返回当前递归层时正好想利用数组被永久改变的特征，虽然两次递归用的
         # 都是变量名'data'，变量其实已被修改（pop）
-        data = data[1:-1].split(',')
+
+        data = data[1:-1].split(', ')
         def dfs_generate(data):
             # 也不用担心data为空越界，[1,2,3,None,None,4,None,None,5,None,None]
             # 3作为叶子节点，下两个是None所以递归到了边界会返回None。但是程序不会
@@ -62,14 +64,16 @@ class Codec:
             # 最后到了节点5，作为右节点，在递归函数里是最后一行，它的所有祖上节点
             # 运行到它都要结束，所用调用函数栈都被执行，函数返回值往回传，传到
             # 根节点，程序运行终止
-            print(data)
+
             if data[0]=='None':
                 data.pop(0)
                 return None
-            subroot = TreeNode(data.pop(0))
+            subroot = TreeNode(data[0])
+            data.pop(0)
             subroot.left = dfs_generate(data)
             subroot.right = dfs_generate(data)
-            return subroot            
+            return subroot   
+
         return dfs_generate(data)
 
 # Your Codec object will be instantiated and called as such:

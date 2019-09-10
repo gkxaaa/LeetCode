@@ -1,10 +1,8 @@
+'''
+二分法进阶题目
+'''
 class Solution(object):
     def search(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
         if not nums: return -1
         pivot = self.find_rotate_point(nums)
         if pivot is None:

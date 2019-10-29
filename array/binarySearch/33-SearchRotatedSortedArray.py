@@ -1,5 +1,5 @@
 '''
-二分法进阶题目
+二分法进阶题目, 08.08.2019代码冗杂，参考29.10.2019
 '''
 class Solution(object):
     def search(self, nums, target):

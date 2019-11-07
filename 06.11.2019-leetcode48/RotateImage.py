@@ -13,7 +13,7 @@ class Solution(object):
         step = 0
         while D-2*step > 1:
             for i in range(step, D-1-step):
-                matrix[step][i], matrix[i][D-1-step], matrix[D-1-step][D-1-i], matrix[D-1-i][step] = 
+                matrix[step][i], matrix[i][D-1-step], matrix[D-1-step][D-1-i], matrix[D-1-i][step] = \
                 matrix[D-1-i][step], matrix[step][i], matrix[i][D-1-step], matrix[D-1-step][D-1-i]
             step += 1
             

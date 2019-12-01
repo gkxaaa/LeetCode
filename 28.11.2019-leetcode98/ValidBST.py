@@ -29,3 +29,25 @@ class Solution(object):
         if root.right:
             right = root.right.val>root.val
         return left_sub and right_sub and left and right
+
+    def isValidBST_rec(self, root, MAX=float('inf'), MIN=-float('inf')):
+        if not root:
+            return True
+        res = False
+        if MIN<root.val<MAX:
+            res = self.isValidBST(root.left, root.val, MIN) and \
+                self.isValidBST(root.right, MAX, root.val)
+        return res
+
+    def isValidBST(self, root):
+        MIN, MAX = -float('inf'), float('inf')
+        queue = [(root, MIN, MAX)]
+        while queue:
+            node, MIN, MAX = queue.pop(0)
+            if node: 
+                if MIN<node.val<MAX:
+                    queue.append((node.left, MIN, node.val))
+                    queue.append((node.right, node.val, MAX))
+                else:
+                    return False
+        return True

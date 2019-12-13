@@ -17,9 +17,9 @@
 ----------------------------------------------------------------
 '''
 
-def dfs(matrix, i, j, pre=0, length=0):
+def dfs(matrix, i, j, pre, length=0):
     global res
-    if not 0<=i<rows or not 0<=j<colss or not board[i][j] or matrix[i][j]>pre:
+    if not 0<=i<rows or not 0<=j<colss or not board[i][j] or matrix[i][j]<=pre:
         res = max(res, length)
         return
     board[i][j] = Fasle
@@ -42,5 +42,5 @@ def maxLength(matrix):
     for i in range(rows):
         for j in range(cols):
             board = [[True]*cols for _ in range(rows)]
-            dfs(matrix, i, j)
+            dfs(matrix, -float('inf'), i, j)
     return res

@@ -16,3 +16,24 @@
 1 4
 输出
 5
+
+dMap = {1:[2,3,5], 3:[6,4]}
+dValue = {1:2, 2:5}
+def dfs(i):
+    if i not in d or m==M:
+        retrun  0, 0
+    v0 = -1
+    for j in dMap[i]:
+        v, m = dfs(j)
+        v += dValue[j]
+        v0 = max(v0, v)
+        m += 1
+    return v0, m
+
+MAX, tmp = -1, []
+for key in dMap.keys():
+    v, m = dfs(i)
+    if m==M:
+        MAX = max(MAX, v)
+    else:
+        tmp.append((v, m))
